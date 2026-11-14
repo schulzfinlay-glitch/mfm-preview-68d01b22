@@ -35,8 +35,22 @@
   .mulligan { position: absolute; z-index: 4; right: 1.5rem; bottom: 1.5rem; }
 
   /* =========================================================== HOLE 2 == */
-  .kit [data-sc-stage] { overflow: hidden; display: grid; align-items: center; background: var(--bone); }
-  .rail { display: flex; gap: 1.5rem; align-items: center; padding-inline: var(--sc-gutter); will-change: transform; }
+  /* A native sideways row: swipe, trackpad or drag it; the page scrolls straight past. */
+  .kit { padding-block: var(--sc-section); background: var(--bone); }
+  .kit__inner { position: relative; }
+  .rail { display: flex; gap: 1.5rem; align-items: center; padding-inline: var(--sc-gutter); scroll-padding-inline: var(--sc-gutter);
+    overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .rail::-webkit-scrollbar { display: none; }
+  .rail > * { scroll-snap-align: start; }
+  .rail:focus-visible { outline-offset: -3px; }
+  .rail.is-drag { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+  .rail.is-drag a { pointer-events: none; }
+  @media (hover: hover) and (pointer: fine) { .rail { cursor: grab; } }
+  .rail__nav { display: flex; gap: 0.5rem; justify-content: flex-end; padding: 1.25rem var(--sc-gutter) 0; }
+  .rail__nav button { width: 2.75rem; height: 2.75rem; border-radius: 999px; border: 1.5px solid var(--green); background: transparent; color: var(--green); display: grid; place-items: center; cursor: pointer; transition: background 160ms, color 160ms, opacity 160ms; }
+  .rail__nav button:hover:not([disabled]) { background: var(--green); color: var(--bone); }
+  .rail__nav button[disabled] { opacity: 0.3; cursor: default; }
+  .rail__nav svg { width: 1.1rem; height: 1.1rem; }
   .rail__lead { flex: 0 0 min(30rem, 82vw); padding-right: 1.5rem; }
   .rail__lead h2 { font-size: clamp(2.6rem, 1.4rem + 4vw, 5.2rem); margin: 0.6rem 0 1rem; }
   .rail__lead p { max-width: 36ch; margin: 0 0 1.5rem; }
@@ -190,10 +204,10 @@
     </div>
   </section>
 
-  <!-- HOLE 2 · THE KIT. Pan: walking the fairway past every piece. -->
-  <section id="hole-2" data-hole="2" class="kit" data-sc-act="pan" data-sc-span="3" data-sc-drift="#f3eee3" aria-labelledby="kit-title">
-    <div data-sc-stage>
-      <div class="rail" data-sc-pan="0.04" data-rail>
+  <!-- HOLE 2 · THE KIT. A sideways row you swipe, drag or arrow through; the page scrolls straight past it. -->
+  <section id="hole-2" data-hole="2" class="kit" data-sc-act="flow" data-sc-drift="#f3eee3" aria-labelledby="kit-title">
+    <div class="kit__inner">
+      <div class="rail" data-rail tabindex="0" aria-label="The kit: scroll sideways">
         <div class="rail__lead">
           <p class="eyebrow">Hole 2 · The kit</p>
           <h2 class="display" id="kit-title">Seven pieces. <em>One message.</em></h2>
@@ -202,6 +216,10 @@
         </div>
         <div class="feature"><figure><img src="/mfm-preview-68d01b22/assets/products/course-back.webp" alt="A golfer on the course in The Crossed Clubs Polo, Check on your mates printed across the back" width="1400" height="933" loading="lazy"></figure><p class="feature__cap">The Crossed Clubs Polo, out on the course.</p></div>
         <!--mfm:lines--><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/the-crossed-clubs-polo.html" tabindex="-1" aria-hidden="true"><img src="/mfm-preview-68d01b22/assets/products/polo-front.webp" alt="The Crossed Clubs Polo" width="600" height="600" loading="lazy"></a><h3><a href="/mfm-preview-68d01b22/kit/the-crossed-clubs-polo.html">The Crossed Clubs Polo</a></h3><div class="pline__row"><span>Check on your mates, printed across the back.</span><span class="num">$79</span></div></article><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/tee-it-up-tee.html?colour=black" tabindex="-1" aria-hidden="true"><img src="/mfm-preview-68d01b22/assets/products/tee-black-back.webp" alt="Tee It Up Tee" width="600" height="600" loading="lazy"></a><h3><a href="/mfm-preview-68d01b22/kit/tee-it-up-tee.html?colour=black">Tee It Up Tee</a></h3><div class="pline__row"><span>3 colours</span><span class="num">$54</span></div></article><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/check-on-your-mates-cap.html?colour=black" tabindex="-1" aria-hidden="true"><img src="/mfm-preview-68d01b22/assets/products/cap-black.webp" alt="Check On Your Mates Cap" width="600" height="600" loading="lazy"></a><h3><a href="/mfm-preview-68d01b22/kit/check-on-your-mates-cap.html?colour=black">Check On Your Mates Cap</a></h3><div class="pline__row"><span>4 colours</span><span class="num">$27</span></div></article><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/sure-grip-glove.html" tabindex="-1" aria-hidden="true"><img src="/mfm-preview-68d01b22/assets/products/glove.webp" alt="Sure Grip Glove" width="600" height="600" loading="lazy"></a><h3><a href="/mfm-preview-68d01b22/kit/sure-grip-glove.html">Sure Grip Glove</a></h3><div class="pline__row"><span>Premium Cabretta leather. Crest on the tab.</span><span class="num">$23</span></div></article><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/golf-towel.html" tabindex="-1" aria-hidden="true"><img src="/mfm-preview-68d01b22/assets/products/towel.webp" alt="Golf Towel" width="600" height="600" loading="lazy"></a><h3><a href="/mfm-preview-68d01b22/kit/golf-towel.html">Golf Towel</a></h3><div class="pline__row"><span>Waffle microfibre with a carabiner clip.</span><span class="num">$15</span></div></article><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/ball-marker-coin.html" tabindex="-1" aria-hidden="true"><img src="/mfm-preview-68d01b22/assets/products/coin.webp" alt="Ball Marker Coin" width="600" height="600" loading="lazy"></a><h3><a href="/mfm-preview-68d01b22/kit/ball-marker-coin.html">Ball Marker Coin</a></h3><div class="pline__row"><span>Enamel coin with a removable 25 mm marker.</span><span class="num">$12</span></div></article><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/gift-voucher.html" tabindex="-1" aria-hidden="true"></a><h3><a href="/mfm-preview-68d01b22/kit/gift-voucher.html">Gift Voucher</a></h3><div class="pline__row"><span>A round on you. Delivered by email.</span><span class="num">From $50</span></div></article><!--/mfm:lines-->
+      </div>
+      <div class="rail__nav" data-rail-nav>
+        <button type="button" data-dir="-1" aria-label="Previous pieces"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" data-dir="1" aria-label="More pieces"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
     </div>
   </section>

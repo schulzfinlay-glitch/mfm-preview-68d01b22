@@ -80,21 +80,37 @@
   var rail = document.querySelector('[data-rail]');
   rail.querySelectorAll('.pline').forEach(function (el) { el.remove(); });
   rail.insertAdjacentHTML('beforeend', X.products.map(function (p, i) { return X.line(p, null, { eager: i < 2 }); }).join(''));
-  rail.addEventListener('focusin', function (e) {
-    var item = e.target.closest('.pline, .feature'); var act = rail.closest('[data-sc-act="pan"]');
-    if (!item || !act) return;
-    requestAnimationFrame(function () {
-      rail.parentElement.scrollLeft = 0;
-      var travel = (rail.scrollWidth - innerWidth) * (1 + (parseFloat(rail.getAttribute('data-sc-pan')) || 0));
-      var p = clamp01((item.offsetLeft + item.offsetWidth / 2 - innerWidth / 2) / travel);
-      scrollTo({ top: act.getBoundingClientRect().top + scrollY + p * (act.offsetHeight - innerHeight), behavior: 'instant' });
-    });
-  });
-  if (reduce) {
-    var act = rail.closest('[data-sc-act]');
-    act.setAttribute('data-sc-act', 'flow'); act.removeAttribute('data-sc-span'); rail.removeAttribute('data-sc-pan');
-    rail.style.cssText += ';overflow-x:auto;padding-block:var(--sc-section);scroll-snap-type:x mandatory';
+  // A native sideways scroller: swipe or trackpad on its own, drag with a
+  // mouse, arrow buttons for the step-through. Vertical wheel passes to the page.
+  var nav = document.querySelector('[data-rail-nav]'), prev = nav.querySelector('[data-dir="-1"]'), next = nav.querySelector('[data-dir="1"]');
+  function ends() {
+    var max = rail.scrollWidth - rail.clientWidth - 2;
+    prev.disabled = rail.scrollLeft <= 2; next.disabled = rail.scrollLeft >= max;
+    nav.hidden = max <= 0;
   }
+  rail.addEventListener('scroll', ends, { passive: true }); addEventListener('resize', ends); ends();
+  nav.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-dir]'); if (!b) return;
+    rail.scrollBy({ left: Number(b.dataset.dir) * rail.clientWidth * 0.8, behavior: reduce ? 'auto' : 'smooth' });
+  });
+  var drag = null;
+  rail.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag = { x: e.clientX, left: rail.scrollLeft, moved: false };
+  });
+  addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    var dx = e.clientX - drag.x;
+    if (!drag.moved && Math.abs(dx) > 5) { drag.moved = true; rail.classList.add('is-drag'); }
+    if (drag.moved) { rail.scrollLeft = drag.left - dx; e.preventDefault(); }
+  });
+  ['pointerup', 'pointercancel'].forEach(function (t) { addEventListener(t, endDrag); });
+  function endDrag() {
+    if (!drag) return;
+    var moved = drag.moved; drag = null;
+    if (moved) setTimeout(function () { rail.classList.remove('is-drag'); }, 0);
+  }
+  rail.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
   // ---------------------------------------------------------- hole 3 --
   var meter = document.querySelector('[data-meter]');
