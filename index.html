@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mates for Mulligans · Golf apparel that checks on your mates</title>
+<meta name="description" content="Australian golf polos, tees, caps and accessories with a reminder built in: check on your mates. 30% of every sale goes to Beyond Blue.">
+<link rel="icon" href="/mfm-preview-68d01b22/assets/brand/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,500..800,0..100;1,9..144,500..700,0..100&family=Instrument+Sans:wght@400..600&display=swap">
+<link rel="preload" as="image" href="/mfm-preview-68d01b22/assets/products/polo-back.webp">
+<link rel="stylesheet" href="/mfm-preview-68d01b22/scrollcraft.css">
+<link rel="stylesheet" href="/mfm-preview-68d01b22/site.css">
+<style>
+  /* =========================================================== HOLE 1 ==
+     Tee off. The course is an illustration in planes: ground, ball shadow,
+     ball, then the tree canopy over the top so the slice disappears under it. */
+  .tee { background: var(--green); }
+  .tee__stage { display: grid; grid-template-columns: minmax(20rem, 0.8fr) minmax(0, 1.4fr); background: var(--green); }
+  .tee__copy { position: relative; z-index: 3; display: grid; align-content: center; gap: 1.1rem; padding: calc(var(--bar-h) + 2rem) clamp(1.5rem, 4vw, 4rem) 2rem var(--sc-gutter); color: var(--bone); }
+  .tee__copy .eyebrow { color: var(--pin); }
+  /* All lines share one grid cell, so the block is always as tall as the
+     longest line and nothing below it moves or gets covered. */
+  .tee__lines { display: grid; }
+  .tee__line { grid-area: 1 / 1; margin: 0; visibility: hidden; opacity: 0; transition: opacity 260ms var(--sc-ease-out); }
+  .tee__line.is-on { visibility: visible; opacity: 1; }
+  .tee__line h1, .tee__line h2 { font-size: clamp(2.4rem, 1.4rem + 3.4vw, 4.8rem); color: var(--bone); }
+  .tee__line p { margin: 1rem 0 0; font-size: 1.05rem; max-width: 30ch; color: color-mix(in oklab, var(--bone) 86%, transparent); }
+  .tee__ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .tee__ctas .btn--ghost { color: var(--bone); border-color: var(--bone); }
+  .tee__course { position: relative; overflow: hidden; background: #24503b; }
+  .tee__course svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .mulligan { position: absolute; z-index: 4; right: 1.5rem; bottom: 1.5rem; }
+
+  /* =========================================================== HOLE 2 == */
+  .kit [data-sc-stage] { overflow: hidden; display: grid; align-items: center; background: var(--bone); }
+  .rail { display: flex; gap: 1.5rem; align-items: center; padding-inline: var(--sc-gutter); will-change: transform; }
+  .rail__lead { flex: 0 0 min(30rem, 82vw); padding-right: 1.5rem; }
+  .rail__lead h2 { font-size: clamp(2.6rem, 1.4rem + 4vw, 5.2rem); margin: 0.6rem 0 1rem; }
+  .rail__lead p { max-width: 36ch; margin: 0 0 1.5rem; }
+  .rail .pline { flex: 0 0 clamp(15rem, 22vw, 20rem); }
+  .feature { flex: 0 0 min(34rem, 84vw); display: grid; gap: 0.75rem; }
+  .feature figure { margin: 0; border-radius: var(--sc-r-lg); overflow: hidden; aspect-ratio: 4/3; box-shadow: var(--sc-e2); }
+  .feature img { width: 100%; height: 100%; object-fit: cover; }
+  .feature__cap { margin: 0; font-size: 0.85rem; color: var(--sc-ink-soft); }
+
+  /* =========================================================== HOLE 3 == */
+  .cause { padding: var(--sc-section) var(--sc-gutter); background: var(--sc-surface); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+  .cause h2 { font-size: clamp(2.4rem, 1.4rem + 3.6vw, 4.6rem); margin: 0.6rem 0 1.2rem; }
+  .cause__lede { max-width: 44ch; font-size: 1.05rem; line-height: 1.65; margin: 0 0 1.5rem; }
+  .meter { background: var(--green); color: var(--bone); border-radius: var(--sc-r-lg); padding: clamp(1.5rem, 4vw, 2.5rem); display: grid; gap: 1rem; box-shadow: var(--sc-e3); }
+  .meter__big { font: 750 clamp(3rem, 2rem + 4vw, 5.5rem)/1 var(--sc-font-display); font-variation-settings: "SOFT" 100, "opsz" 144; color: var(--pin); letter-spacing: -0.02em; }
+  .meter__track { height: 14px; border-radius: 999px; background: color-mix(in oklab, var(--bone) 18%, transparent); overflow: hidden; }
+  .meter__fill { height: 100%; width: 100%; border-radius: inherit; background: var(--pin); transform-origin: left; transform: scaleX(var(--m, 0)); transition: transform 1200ms var(--sc-ease-out); }
+  .meter small { opacity: 0.8; font-size: 0.8rem; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .steps li { display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.8rem; padding: 0.9rem 0; border-top: 1px solid var(--sc-hairline-strong); }
+  .steps b { font: 700 1.3rem/1 var(--sc-font-display); color: var(--fairway); }
+
+  /* =========================================================== HOLE 4 == */
+  .checkin { padding: var(--sc-section) var(--sc-gutter); display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .checkin h2 { font-size: clamp(2.4rem, 1.4rem + 3.6vw, 4.6rem); margin: 0.6rem 0 1.2rem; }
+  .composer { background: #fff; border-radius: var(--sc-r-lg); padding: clamp(1.25rem, 3vw, 2rem); box-shadow: var(--sc-e2); display: grid; gap: 1rem; }
+  .composer label { font-size: 0.8rem; font-weight: 600; display: grid; gap: 0.4rem; }
+  .composer input { min-height: 48px; padding: 0 1rem; border-radius: 12px; border: 1.5px solid var(--sc-hairline-strong); font: 400 1rem/1 var(--sc-font-text); background: var(--bone); color: var(--sc-ink); }
+  .opener { display: grid; gap: 0.5rem; }
+  .opener button { text-align: left; padding: 0.8rem 1rem; border-radius: 12px; border: 1.5px solid var(--sc-hairline-strong); background: transparent; font: 400 0.95rem/1.4 var(--sc-font-text); color: var(--sc-ink); cursor: pointer; }
+  .opener button[aria-pressed="true"] { border-color: var(--green); background: color-mix(in oklab, var(--pin) 30%, var(--bone)); }
+  .bubble { position: relative; padding: 1rem 1.2rem; border-radius: 18px 18px 18px 4px; background: var(--green); color: var(--bone); font-size: 1rem; line-height: 1.5; }
+  .send { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .helplines { margin-top: 1.5rem; padding: 1rem 1.2rem; border-radius: 14px; border: 1.5px solid var(--green); font-size: 0.92rem; line-height: 1.6; }
+  .helplines a { color: var(--green); font-weight: 700; }
+
+  /* ========================================================== HOLE 19 ==
+     The clubhouse. Hard cut to green: the round is over. */
+  .clubhouse { background: var(--green); color: var(--bone); padding: var(--sc-section) var(--sc-gutter) 3rem; }
+  .clubhouse h2 { color: var(--bone); font-size: clamp(2.6rem, 1.4rem + 4vw, 5.2rem); margin: 0.6rem 0 1rem; }
+  .clubhouse .eyebrow { color: var(--pin); }
+  .clubhouse__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 5rem); }
+  .voucher { background: var(--bone); color: var(--sc-ink); border-radius: var(--sc-r-lg); padding: 1.5rem; display: grid; gap: 1rem; }
+  .voucher .sizes .size { min-width: 4.2rem; }
+  .faq details { border-top: 1px solid color-mix(in oklab, var(--bone) 25%, transparent); }
+  .faq details:last-child { border-bottom: 1px solid color-mix(in oklab, var(--bone) 25%, transparent); }
+  .faq summary { cursor: pointer; list-style: none; padding: 1rem 2.2rem 1rem 0; position: relative; font: 600 1.05rem/1.3 var(--sc-font-display); font-variation-settings: "SOFT" 100; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 0.2rem; top: 0.9rem; color: var(--pin); font-size: 1.3rem; }
+  .faq details[open] summary::after { content: "\2212"; }
+  .faq p, .faq table { margin: 0 0 1.2rem; font-size: 0.9rem; line-height: 1.65; color: color-mix(in oklab, var(--bone) 88%, transparent); }
+  .faq a { color: var(--pin); }
+  .chart { border-collapse: collapse; width: 100%; max-width: 32rem; font-variant-numeric: tabular-nums; }
+  .chart th, .chart td { padding: 0.4rem 0.6rem; text-align: left; border-bottom: 1px solid color-mix(in oklab, var(--bone) 18%, transparent); font-size: 0.85rem; }
+  .chart th { color: var(--pin); font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .tee__stage { grid-template-columns: 1fr; grid-template-rows: 52% 1fr; }
+    .tee__course { order: -1; }
+    .tee__copy { padding: 1rem var(--sc-gutter) 1.25rem; align-content: start; gap: 0.7rem; }
+    .tee__line h1, .tee__line h2 { font-size: 2rem; }
+    .tee__line p { font-size: 0.95rem; margin-top: 0.6rem; }
+    .mulligan { right: 0.75rem; bottom: 0.75rem; }
+    .cause, .checkin, .clubhouse__grid { grid-template-columns: 1fr; }
+  }
+</style>
+<!--mfm:head-->
+<link rel="canonical" href="https://www.matesformulligans.com.au/">
+<meta property="og:site_name" content="Mates for Mulligans">
+<meta property="og:locale" content="en_AU">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mates for Mulligans · Golf apparel that checks on your mates">
+<meta property="og:description" content="Australian golf polos, tees, caps and accessories with a reminder built in: check on your mates. 30% of every sale goes to Beyond Blue.">
+<meta property="og:url" content="https://www.matesformulligans.com.au/">
+<meta property="og:image" content="https://www.matesformulligans.com.au/assets/brand/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","OnlineStore"],"@id":"https://www.matesformulligans.com.au/#org","name":"Mates for Mulligans","url":"https://www.matesformulligans.com.au/","logo":"https://www.matesformulligans.com.au/assets/brand/mark.svg","slogan":"Every mate deserves another shot.","description":"Australian golf apparel and accessories. 30% of every sale goes to Beyond Blue to support men's mental health.","areaServed":"AU","sameAs":["https://www.instagram.com/matesformulligans","https://www.facebook.com/matesformulligans"]},{"@type":"WebSite","@id":"https://www.matesformulligans.com.au/#site","name":"Mates for Mulligans","url":"https://www.matesformulligans.com.au/","publisher":{"@id":"https://www.matesformulligans.com.au/#org"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do the polos fit?","acceptedAnswer":{"@type":"Answer","text":"The Crossed Clubs Polo is a classic fit in a stretchy, quick-dry 180 g polyester and spandex. Compare chest and shoulder width with a polo you like; between sizes, go up."}},{"@type":"Question","name":"How do the tees fit?","acceptedAnswer":{"@type":"Answer","text":"Tee It Up tees are 100% cotton with an oversized, relaxed fit. Measurements are the garment laid flat; go up for more room, down for a less oversized look."}},{"@type":"Question","name":"How much goes to Beyond Blue?","acceptedAnswer":{"@type":"Answer","text":"30% of every sale goes to the Mates for Mulligans fundraiser for Beyond Blue."}},{"@type":"Question","name":"Can I donate without buying anything?","acceptedAnswer":{"@type":"Answer","text":"Yes, through the fundraiser page: https://workplace-fundraising.raiselysite.com/matesformulligan"}},{"@type":"Question","name":"Which hand is the glove for?","acceptedAnswer":{"@type":"Answer","text":"Choose the hand you wear it on. Most right-handed golfers wear their glove on the left hand."}}]}]}</script>
+<!--/mfm:head-->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar" data-bar><!--mfm:bar--><a class="lockup" href="/mfm-preview-68d01b22/"><span>Mates for Mulligans</span></a><nav class="card-nav" aria-label="The round"><a href="/mfm-preview-68d01b22/#hole-1"><b>1</b>Tee off</a><a href="/mfm-preview-68d01b22/#hole-2"><b>2</b>The kit</a><a href="/mfm-preview-68d01b22/#hole-3"><b>3</b>The cause</a><a href="/mfm-preview-68d01b22/#hole-4"><b>4</b>Check in</a><a href="/mfm-preview-68d01b22/#hole-19"><b>19</b>Clubhouse</a></nav><div class="bar__end"><a class="icon-btn" href="/mfm-preview-68d01b22/shop.html">Pro shop</a></div><!--/mfm:bar--></header>
+
+<main id="main">
+
+  <!-- HOLE 1 · TEE OFF. The peak. Pinned: the slice, then the mulligan. -->
+  <section id="hole-1" data-hole="1" data-sc-act="pin" data-sc-span="3.2" class="tee" aria-labelledby="tee-title">
+    <div data-sc-stage class="tee__stage">
+      <div class="tee__copy">
+        <p class="eyebrow">Hole 1 · Tee off</p>
+        <div class="tee__lines" aria-live="polite">
+          <div class="tee__line is-on" data-line="0"><h1 class="display" id="tee-title">Golf kit that <em>checks on your mates.</em></h1><p>Polos, tees and caps with a reminder built in. 30% of every sale goes to Beyond Blue.</p></div>
+          <div class="tee__line" data-line="1"><h2 class="display">Everyone has a bad day.</h2><p>Straight into the trees. It happens to all of us, on the course and off it.</p></div>
+          <div class="tee__line" data-line="2"><h2 class="display">So take a <em>mulligan.</em></h2><p>Mates aren't remembered by their worst day. You get another shot. So do they.</p></div>
+          <div class="tee__line" data-line="3"><h2 class="display">Every mate deserves <em>another shot.</em></h2><p>Wear the reminder. Then make the call.</p></div>
+        </div>
+        <div class="tee__ctas">
+          <a class="btn btn--pin" href="#hole-2">Shop the kit</a>
+          <a class="btn btn--ghost" href="#hole-4">Check on a mate</a>
+        </div>
+      </div>
+      <div class="tee__course">
+        <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" data-course>
+          <defs>
+            <pattern id="mow" width="80" height="80" patternUnits="userSpaceOnUse" patternTransform="rotate(-28)"><rect width="40" height="80" fill="#ffffff" opacity="0.045"/></pattern>
+            <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3"/></filter>
+          </defs>
+          <!-- Plane 1: the ground -->
+          <rect width="1200" height="800" fill="#24503b"/>
+          <path d="M150 720 C 260 520 420 440 620 390 S 880 270 935 195" fill="none" stroke="#2f6b4f" stroke-width="170" stroke-linecap="round"/>
+          <path d="M150 720 C 260 520 420 440 620 390 S 880 270 935 195" fill="none" stroke="url(#mow)" stroke-width="170" stroke-linecap="round"/>
+          <ellipse cx="935" cy="195" rx="118" ry="86" fill="#3d8a61"/>
+          <ellipse cx="935" cy="195" rx="118" ry="86" fill="url(#mow)"/>
+          <ellipse cx="790" cy="262" rx="48" ry="22" fill="#dccdb0" transform="rotate(-20 790 262)"/>
+          <ellipse cx="1058" cy="262" rx="40" ry="19" fill="#dccdb0" transform="rotate(15 1058 262)"/>
+          <ellipse cx="545" cy="500" rx="58" ry="24" fill="#dccdb0" transform="rotate(-25 545 500)"/>
+          <rect x="120" y="690" width="70" height="44" rx="10" fill="#3d8a61"/>
+          <!-- the cup and the flag that asks -->
+          <ellipse cx="955" cy="186" rx="9" ry="5" fill="#16231c"/>
+          <g data-flag transform="translate(953 186)">
+            <rect x="-2" y="-78" width="4" height="78" rx="2" fill="#f3eee3"/>
+            <path d="M2 -76h40a8 8 0 0 1 8 8v18a8 8 0 0 1-8 8H18l-16 12z" fill="#f4c542"/>
+            <circle cx="18" cy="-59" r="3" fill="#1b3b2e"/><circle cx="28" cy="-59" r="3" fill="#1b3b2e"/><circle cx="38" cy="-59" r="3" fill="#1b3b2e"/>
+          </g>
+          <g data-ask opacity="0">
+            <rect x="760" y="70" width="170" height="44" rx="22" fill="#f3eee3"/>
+            <path d="M905 112 l22 20 l-4 -22 z" fill="#f3eee3"/>
+            <text x="845" y="98" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="650" font-size="20" fill="#1b3b2e">You right, mate?</text>
+          </g>
+          <!-- Plane 2: the flights. Trails, shadows, balls. -->
+          <path data-path="0" d="M155 705 Q 520 380 835 590" fill="none" stroke="none"/>
+          <path data-path="1" d="M155 705 Q 470 250 942 196" fill="none" stroke="none"/>
+          <path data-trail="0" d="M155 705 Q 520 380 835 590" fill="none" stroke="#f3eee3" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round" opacity="0.6"/>
+          <path data-trail="1" d="M155 705 Q 470 250 942 196" fill="none" stroke="#f4c542" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round" opacity="0.9"/>
+          <ellipse data-shadow="0" rx="9" ry="5" fill="#0c1a13" opacity="0.35" filter="url(#soft)"/>
+          <ellipse data-shadow="1" rx="9" ry="5" fill="#0c1a13" opacity="0.35" filter="url(#soft)"/>
+          <circle data-ball="0" r="9" fill="#ffffff" stroke="#d9d4c7" stroke-width="1"/>
+          <circle data-ball="1" r="9" fill="#ffffff" stroke="#d9d4c7" stroke-width="1"/>
+          <!-- Plane 3: tree canopy, over everything. The slice ends under it. -->
+          <g fill="#16352a">
+            <circle cx="790" cy="575" r="62"/><circle cx="860" cy="610" r="58"/><circle cx="905" cy="545" r="52"/><circle cx="740" cy="640" r="48"/><circle cx="960" cy="620" r="45"/>
+            <circle cx="350" cy="300" r="56"/><circle cx="300" cy="350" r="48"/><circle cx="410" cy="250" r="44"/>
+            <circle cx="1120" cy="420" r="70"/><circle cx="1060" cy="470" r="50"/><circle cx="120" cy="140" r="80"/><circle cx="210" cy="90" r="60"/>
+          </g>
+          <g fill="#1f4636" opacity="0.9">
+            <circle cx="805" cy="560" r="34"/><circle cx="875" cy="595" r="30"/><circle cx="915" cy="532" r="26"/><circle cx="360" cy="290" r="30"/><circle cx="1130" cy="405" r="38"/><circle cx="135" cy="125" r="42"/>
+          </g>
+        </svg>
+        <button class="btn btn--pin mulligan" type="button" data-mulligan>Take a mulligan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOLE 2 · THE KIT. Pan: walking the fairway past every piece. -->
+  <section id="hole-2" data-hole="2" class="kit" data-sc-act="pan" data-sc-span="3" data-sc-drift="#f3eee3" aria-labelledby="kit-title">
+    <div data-sc-stage>
+      <div class="rail" data-sc-pan="0.04" data-rail>
+        <div class="rail__lead">
+          <p class="eyebrow">Hole 2 · The kit</p>
+          <h2 class="display" id="kit-title">Seven pieces. <em>One message.</em></h2>
+          <p>Every polo, tee, cap and coin carries the same quiet nudge: check on your mates. Every line shows what it raises.</p>
+          <a class="btn" href="/mfm-preview-68d01b22/shop.html">Visit the pro shop</a>
+        </div>
+        <div class="feature"><figure><img src="/mfm-preview-68d01b22/assets/products/course-back.webp" alt="A golfer on the course in The Crossed Clubs Polo, Check on your mates printed across the back" width="1400" height="933" loading="lazy"></figure><p class="feature__cap">The Crossed Clubs Polo, out on the course.</p></div>
+        <!--mfm:lines--><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/the-crossed-clubs-polo.html" tabindex="-1" aria-hidden="true"><img src="/mfm-preview-68d01b22/assets/products/polo-front.webp" alt="The Crossed Clubs Polo" width="600" height="600" loading="lazy"></a><h3><a href="/mfm-preview-68d01b22/kit/the-crossed-clubs-polo.html">The Crossed Clubs Polo</a></h3><div class="pline__row"><span>Check on your mates, printed across the back.</span><span class="num">$79</span></div></article><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/tee-it-up-tee.html?colour=black" tabindex="-1" aria-hidden="true"><img src="/mfm-preview-68d01b22/assets/products/tee-black-back.webp" alt="Tee It Up Tee" width="600" height="600" loading="lazy"></a><h3><a href="/mfm-preview-68d01b22/kit/tee-it-up-tee.html?colour=black">Tee It Up Tee</a></h3><div class="pline__row"><span>3 colours</span><span class="num">$54</span></div></article><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/check-on-your-mates-cap.html?colour=black" tabindex="-1" aria-hidden="true"><img src="/mfm-preview-68d01b22/assets/products/cap-black.webp" alt="Check On Your Mates Cap" width="600" height="600" loading="lazy"></a><h3><a href="/mfm-preview-68d01b22/kit/check-on-your-mates-cap.html?colour=black">Check On Your Mates Cap</a></h3><div class="pline__row"><span>4 colours</span><span class="num">$27</span></div></article><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/sure-grip-glove.html" tabindex="-1" aria-hidden="true"><img src="/mfm-preview-68d01b22/assets/products/glove.webp" alt="Sure Grip Glove" width="600" height="600" loading="lazy"></a><h3><a href="/mfm-preview-68d01b22/kit/sure-grip-glove.html">Sure Grip Glove</a></h3><div class="pline__row"><span>Premium Cabretta leather. Crest on the tab.</span><span class="num">$23</span></div></article><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/golf-towel.html" tabindex="-1" aria-hidden="true"><img src="/mfm-preview-68d01b22/assets/products/towel.webp" alt="Golf Towel" width="600" height="600" loading="lazy"></a><h3><a href="/mfm-preview-68d01b22/kit/golf-towel.html">Golf Towel</a></h3><div class="pline__row"><span>Waffle microfibre with a carabiner clip.</span><span class="num">$15</span></div></article><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/ball-marker-coin.html" tabindex="-1" aria-hidden="true"><img src="/mfm-preview-68d01b22/assets/products/coin.webp" alt="Ball Marker Coin" width="600" height="600" loading="lazy"></a><h3><a href="/mfm-preview-68d01b22/kit/ball-marker-coin.html">Ball Marker Coin</a></h3><div class="pline__row"><span>Enamel coin with a removable 25 mm marker.</span><span class="num">$12</span></div></article><article class="pline"><a class="pline__media" href="/mfm-preview-68d01b22/kit/gift-voucher.html" tabindex="-1" aria-hidden="true"></a><h3><a href="/mfm-preview-68d01b22/kit/gift-voucher.html">Gift Voucher</a></h3><div class="pline__row"><span>A round on you. Delivered by email.</span><span class="num">From $50</span></div></article><!--/mfm:lines-->
+      </div>
+    </div>
+  </section>
+
+  <!-- HOLE 3 · THE CAUSE. -->
+  <section id="hole-3" data-hole="3" class="cause" data-sc-act="flow" data-sc-drift="#e9e1cf" aria-labelledby="cause-title">
+    <div data-sc-in data-sc-stagger="70">
+      <p class="eyebrow">Hole 3 · The cause</p>
+      <h2 class="display" id="cause-title">30% of every sale, <em>straight to Beyond Blue.</em></h2>
+      <p class="cause__lede">Beyond Blue supports Australians with anxiety and depression, and helps people look out for each other. Every time you buy, almost a third of it goes there.</p>
+      <ol class="steps">
+        <li><b>1</b><span>You buy the kit. Your card shows exactly what your order raises.</span></li>
+        <li><b>2</b><span>30% of the sale goes to our Beyond Blue fundraiser.</span></li>
+        <li><b>3</b><span>You wear the reminder, and somebody asks about it. That's the point.</span></li>
+      </ol>
+    </div>
+    <div class="meter" data-meter data-sc-in>
+      <span class="eyebrow" style="color:var(--bone);opacity:.8">Raised so far</span>
+      <span class="meter__big num" data-raised><!--mfm:raised-->$1,397.36<!--/mfm:raised--></span>
+      <div class="meter__track" role="progressbar" aria-label="Fundraising progress" aria-valuemin="0" aria-valuemax="5000" data-meter-bar><div class="meter__fill"></div></div>
+      <span data-meter-of></span>
+      <a class="btn btn--pin" href="https://workplace-fundraising.raiselysite.com/matesformulligan" rel="noopener">Donate directly</a>
+      <small data-meter-asof></small>
+    </div>
+  </section>
+
+  <!-- HOLE 4 · CHECK IN. A real tool: send a mate a message. -->
+  <section id="hole-4" data-hole="4" class="checkin" data-sc-act="flow" data-sc-drift="#f3eee3" aria-labelledby="check-title">
+    <div data-sc-in>
+      <p class="eyebrow">Hole 4 · Check in</p>
+      <h2 class="display" id="check-title">The shirt starts it. <em>You finish it.</em></h2>
+      <p style="max-width:42ch;font-size:1.05rem;line-height:1.65">The hardest part is the first message. Pick one, put your mate's name in, and send it from your own phone. It takes ten seconds.</p>
+      <div class="helplines">If you or a mate need to talk to someone now: <a href="tel:1300224636">Beyond Blue 1300 22 4636</a>, any time. In a crisis: <a href="tel:131114">Lifeline 13 11 14</a>. In an emergency, call 000.</div>
+    </div>
+    <div class="composer" data-composer>
+      <label>Your mate's name<input type="text" data-mate placeholder="e.g. Davo" autocomplete="off" maxlength="40"></label>
+      <div class="opener" role="group" aria-label="Pick a message" data-openers></div>
+      <div class="bubble" data-preview aria-live="polite"></div>
+      <div class="send">
+        <a class="btn" data-sms href="#">Send as a text</a>
+        <a class="btn btn--ghost" data-wa href="#" rel="noopener">WhatsApp</a>
+        <button class="btn btn--ghost" type="button" data-copy>Copy</button>
+      </div>
+      <small style="color:var(--sc-ink-soft)">Nothing is sent from this site. It opens your own messages app.</small>
+    </div>
+  </section>
+
+  <!-- HOLE 19 · THE CLUBHOUSE. -->
+  <section id="hole-19" data-hole="19" class="clubhouse" aria-labelledby="club-title">
+    <div class="clubhouse__grid">
+      <div>
+        <p class="eyebrow">The 19th hole</p>
+        <h2 class="display" id="club-title">Pull up a chair.</h2>
+        <p style="max-width:40ch;line-height:1.65;opacity:.9">Round's done. Buying for a mate? A voucher lets them pick their own kit.</p>
+        <div class="voucher" data-voucher></div>
+      </div>
+      <div class="faq" id="faq">
+        <h3 class="display" style="font-size:1.6rem;margin:0 0 1rem">Questions at the bar</h3>
+        <details><summary>How do the polos fit?</summary><p>The Crossed Clubs Polo is a classic fit in a stretchy, quick-dry 180 g polyester and spandex. Compare the chest and shoulder width with a polo you already like. Between sizes, go up.</p><!--mfm:polochart--><table class="chart"><caption class="visually-hidden">The Crossed Clubs Polo size guide, cm</caption><thead><tr><th scope="col">Size</th><th scope="col">Chest (cm)</th><th scope="col">Shoulder width (cm)</th><th scope="col">Back length (cm)</th></tr></thead><tbody><tr><th scope="row">S</th><td>101.8</td><td>45</td><td>68</td></tr><tr><th scope="row">M</th><td>109.4</td><td>47</td><td>70.5</td></tr><tr><th scope="row">L</th><td>117</td><td>49.5</td><td>73</td></tr><tr><th scope="row">XL</th><td>124.6</td><td>53</td><td>76.8</td></tr><tr><th scope="row">2XL</th><td>132.2</td><td>55.5</td><td>79.3</td></tr></tbody></table><!--/mfm:polochart--></details>
+        <details><summary>How do the tees fit?</summary><p>Tee It Up tees are 100% cotton with an oversized, relaxed fit. Measurements are the garment laid flat. Go up for more room, down for a less oversized look. Allow 1 to 3 cm.</p><!--mfm:teechart--><table class="chart"><caption class="visually-hidden">Tee It Up Tee size guide, cm</caption><thead><tr><th scope="col">Size</th><th scope="col">Chest, laid flat (cm)</th><th scope="col">Full chest (cm)</th><th scope="col">Length (cm)</th></tr></thead><tbody><tr><th scope="row">S</th><td>54</td><td>108</td><td>75</td></tr><tr><th scope="row">M</th><td>56</td><td>112</td><td>77</td></tr><tr><th scope="row">L</th><td>58</td><td>116</td><td>79</td></tr><tr><th scope="row">XL</th><td>62</td><td>124</td><td>80</td></tr><tr><th scope="row">2XL</th><td>65</td><td>130</td><td>82</td></tr></tbody></table><!--/mfm:teechart--></details>
+        <details><summary>How much goes to Beyond Blue?</summary><p>30% of every sale. Your card shows the exact amount for your order before checkout, and the running total is on this page.</p></details>
+        <details><summary>Can I donate without buying anything?</summary><p>Yes. <a href="https://workplace-fundraising.raiselysite.com/matesformulligan" rel="noopener">Donate directly through our Beyond Blue fundraiser</a>.</p></details>
+        <details><summary>Which hand is the glove for?</summary><p>Choose the hand you wear it on. Most right-handed golfers wear their glove on the left hand.</p></details>
+        <details><summary>Delivery and returns?</summary><p>Questions about an order, delivery or a return: <a href="https://www.matesformulligans.com.au/pages/contact">get in touch</a> and we'll sort it out.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" data-foot></footer>
+
+<script src="/mfm-preview-68d01b22/catalogue.js"></script>
+<script src="/mfm-preview-68d01b22/app.js"></script>
+<script src="/mfm-preview-68d01b22/scrollcraft.js"></script>
+<script src="/mfm-preview-68d01b22/home.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+</body>
+</html>
