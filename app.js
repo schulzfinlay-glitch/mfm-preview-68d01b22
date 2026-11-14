@@ -44,7 +44,7 @@
   var bar = document.querySelector('[data-bar]');
   if (bar) {
     bar.innerHTML =
-      '<a class="lockup" href="/" aria-label="Mates for Mulligans home">' + MARK + '<span>Mates for Mulligans</span></a>' +
+      '<a class="lockup" href="/mfm-preview-68d01b22/" aria-label="Mates for Mulligans home">' + MARK + '<span>Mates for Mulligans</span></a>' +
       '<nav class="card-nav" aria-label="The round">' + HOLES.map(function (h) { return '<a href="' + h[2] + '" data-hole-link="' + h[0] + '"><b>' + h[0] + '</b>' + h[1] + '</a>'; }).join('') + '</nav>' +
       '<div class="bar__end"><a class="icon-btn shop-link" href="/mfm-preview-68d01b22/shop.html">Pro shop</a>' +
       '<button class="icon-btn icon-btn--fill" type="button" data-open-card aria-label="Open your card">' + icon.card + '<span>Your card</span><span class="count" data-count data-zero>0</span></button>' +
@@ -193,7 +193,7 @@
   // ------------------------------------------------------------- footer --
   var foot = document.querySelector('[data-foot]');
   if (foot) foot.innerHTML =
-    '<div><a class="lockup" href="/">' + MARK + '<span>Mates for Mulligans</span></a><p style="margin:1rem 0 0;max-width:36ch;opacity:.85">Golf kit with a reminder built in. ' + Math.round(C.donationShare * 100) + '% of every sale goes to ' + esc(C.charity.name) + '.</p></div>' +
+    '<div><a class="lockup" href="/mfm-preview-68d01b22/">' + MARK + '<span>Mates for Mulligans</span></a><p style="margin:1rem 0 0;max-width:36ch;opacity:.85">Golf kit with a reminder built in. ' + Math.round(C.donationShare * 100) + '% of every sale goes to ' + esc(C.charity.name) + '.</p></div>' +
     '<div><h2>Pro shop</h2><ul>' + products.map(function (p) { return '<li><a href="/mfm-preview-68d01b22/kit/' + p.slug + '.html">' + esc(p.name) + '</a></li>'; }).join('') + '</ul></div>' +
     '<div><h2>The round</h2><ul>' + HOLES.map(function (h) { return '<li><a href="' + h[2] + '">' + h[1] + '</a></li>'; }).join('') + '<li><a href="/mfm-preview-68d01b22/#faq">Sizing and FAQ</a></li></ul></div>' +
     '<div><h2>Say g\'day</h2><ul><li><a href="' + C.instagram + '">Instagram</a></li><li><a href="' + C.facebook + '">Facebook</a></li><li><a href="' + C.store + '/pages/contact">Contact us</a></li><li><a href="' + C.fundraiser + '">Our fundraiser</a></li></ul></div>' +
